@@ -75,14 +75,15 @@ Then include Google Play Services to your application's build.gradle for better 
 
         private void bindNativeAdToViews(PeakNativeAd nativeAd) {
             //fill views with received native ad data
-            RequestManager glide = Glide.with(this);
-            glide.load(nativeAd.getMainImage()).into(mainImageView);
-            glide.load(nativeAd.getIcon()).into(logoImageView);
-            titleTextView.setText(nativeAd.getTitle());
-            descriptionTextView.setText(nativeAd.getText());
-            adActionButton.setText(nativeAd.getActionText());
+            
+            // load the nativeAd.getMainImage() into your ImageView for the main image
+            // load the nativeAd.getIcon() into your ImageView for icon image
+            // set the nativeAd.getTitle() into you TextView for title
+            // set the nativeAd.getText() into you TextView for description text
+            // set the nativeAd.getActionText() into your Button
 
-            adActionButton.setOnClickListener(new View.OnClickListener() {
+            // set onClickListener on your button 
+            button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //notify SDK that ad was clicked by user
