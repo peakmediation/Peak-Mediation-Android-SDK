@@ -53,23 +53,29 @@ Then include Google Play Services to your application's build.gradle for better 
 
 4. Show interstitial ad:
 
-        PeakSdk.showInterstitial(AD_ZONE_ID);
+        if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
+            PeakSdk.showInterstitial(AD_ZONE_ID);
+        }
 
 5. Get banner view and insert it to your banner container view:
 
-        View banner = PeakSdk.showBanner(AD_ZONE_ID);
-        if (banner != null) {
-          bannerContainer.addView(banner);
+        if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
+            View banner = PeakSdk.showBanner(AD_ZONE_ID);
+            if (banner != null) {
+                bannerContainer.addView(banner);
+            }
         }
 
 6. Show native ad:
 
         private void showNativeAd() {
-            PeakNativeAd peakNativeAd = PeakSdk.showNativeAd(NATIVE_AD_ID);
-            if (peakNativeAd != null) {
-                //notify SDK that ad was shown
-                PeakSdk.trackNativeAdShown(NATIVE_AD_ID);
-                bindNativeAdToViews(peakNativeAd);
+            if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
+                PeakNativeAd peakNativeAd = PeakSdk.showNativeAd(NATIVE_AD_ID);
+                if (peakNativeAd != null) {
+                    //notify SDK that ad was shown
+                    PeakSdk.trackNativeAdShown(NATIVE_AD_ID);
+                    bindNativeAdToViews(peakNativeAd);
+                }
             }
         }
 
