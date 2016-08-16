@@ -84,6 +84,7 @@ Then include Google Play Services to your application's build.gradle for better 
             
             // load the nativeAd.getMainImage() into your ImageView for the main image
             // load the nativeAd.getIcon() into your ImageView for icon image
+            // set the nativeAd.getPrivacyIcon() into ImageView for privacy information icon image
             // set the nativeAd.getTitle() into you TextView for title
             // set the nativeAd.getText() into you TextView for description text
             // set the nativeAd.getActionText() into your Button
@@ -94,6 +95,15 @@ Then include Google Play Services to your application's build.gradle for better 
                 public void onClick(View view) {
                     //notify SDK that ad was clicked by user
                     PeakSdk.handleNativeAdClicked(NATIVE_AD_ID);
+                }
+            });
+
+            // set onClickListener on privacy information icon ImageView
+            privacyInformationIconImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //notify SDK that ad was clicked by user
+                    PeakSdk.handleNativeAdPrivacyIconClicked(NATIVE_AD_ID);
                 }
             });
         }
