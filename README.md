@@ -11,8 +11,8 @@ Then include Google Play Services to your application's build.gradle for better 
 
         dependencies {
             ...
-            compile 'com.google.android.gms:play-services-ads:8.4.0'
-            compile 'com.google.android.gms:play-services-location:8.4.0'
+            compile 'com.google.android.gms:play-services-ads:9.4.0'
+            compile 'com.google.android.gms:play-services-location:9.4.0'
             ...
         }
 
