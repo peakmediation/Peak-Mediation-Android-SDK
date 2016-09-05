@@ -107,3 +107,5 @@ Then include Google Play Services to your application's build.gradle for better 
                 }
             });
         }
+        
+  Make sure your ads are clearly distinguished from the rest of your app’s content. You must include clearly visible text that reads “Promoted,” “Sponsored,” “Ad,” or a localized version thereof.
