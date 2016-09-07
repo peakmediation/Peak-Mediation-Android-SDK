@@ -109,3 +109,28 @@ Then include Google Play Services to your application's build.gradle for better 
         }
         
   Make sure your ads are clearly distinguished from the rest of your app’s content. You must include clearly visible text that reads “Promoted,” “Sponsored,” “Ad,” or a localized version thereof.
+  
+7. Using async ad requests
+  
+        PeakAsyncAdRequestListener asyncAdRequestListener = new PeakAsyncAdRequestListener() {
+            @Override
+            public void onAdReady(String adZoneId) {
+                //Show the ad with adZoneId
+                //Request stops itself when the ad is ready.
+            }
+        };
+        
+        ..
+        //Create an instance of PeakAsyncAdRequest with desired ad zone id and start it
+        PeakAsyncAdRequest asyncAdRequest = PeakSdk.createAdRequest(AD_ZONE_ID);
+        asyncAdRequest.start(asyncAdRequestListener);
+        ..
+        
+        @Override
+        protected void onPause() {
+          ...
+          //Cancel the request if you don't need it anymore
+          asyncAdRequest.cancel();
+          super.onPause();
+        }
+
