@@ -70,7 +70,7 @@ Then include Google Play Services to your application's build.gradle for better 
 
         private void showNativeAd() {
             if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
-                PeakNativeAd peakNativeAd = PeakSdk.showNativeAd(NATIVE_AD_ID);
+                PeakNativeAdModel peakNativeAd = PeakSdk.showNativeAd(NATIVE_AD_ID);
                 if (peakNativeAd != null) {
                     //notify SDK that ad was shown
                     PeakSdk.trackNativeAdShown(NATIVE_AD_ID);
@@ -79,7 +79,7 @@ Then include Google Play Services to your application's build.gradle for better 
             }
         }
 
-        private void bindNativeAdToViews(PeakNativeAd nativeAd) {
+        private void bindNativeAdToViews(PeakNativeAdModel nativeAd) {
             //fill views with received native ad data
             
             // load the nativeAd.getMainImage() into your ImageView for the main image
