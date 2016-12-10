@@ -133,4 +133,14 @@ Then include Google Play Services to your application's build.gradle for better 
           asyncAdRequest.cancel();
           super.onPause();
         }
+        
+8. Using ad targeting.
+
+    Peak SDK provides a way to set PREFFERED targeting age and gender to inrease eCPM. This will not restrict ads to show only targeted ads. 
+    Please set targeting BEFORE the first sdk initialization.
+    
+    setTargetingAge(int age) accepts any number. By default it is set to -1, this value defines unspecified targeting age.
+    
+    setTargetingGender(PeakGender gender) accepts PeakGender enum that has three states : MALE, FEMALE and UNSPECIFIED. By default it is set to UNSPECIFIED.
+
 
