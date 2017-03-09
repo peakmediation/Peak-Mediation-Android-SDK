@@ -49,27 +49,29 @@ Then include Google Play Services to your application's build.gradle for better 
 
 3. Check ad availability for specified zone:
 
-        boolean isAdAvailable = PeakSdk.checkAdAvailable(AD_ZONE_ID);
+        boolean isInterstitialAdAvailable = PeakSdk.checkInterstitialAdAvailable(AD_ZONE_ID);
+        
+        or        
+        
+        boolean isNativeAdAvailable = PeakSdk.checkNativeAdAvailable(AD_ZONE_ID);
 
 4. Show interstitial ad:
 
-        if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
+        if(PeakSdk.checkInterstitialAdAvailable(AD_ZONE_ID)) {
             PeakSdk.showInterstitial(AD_ZONE_ID);
         }
 
 5. Get banner view and insert it to your banner container view:
 
-        if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
-            View banner = PeakSdk.showBanner(AD_ZONE_ID);
-            if (banner != null) {
-                bannerContainer.addView(banner);
-            }
+        View banner = PeakSdk.showBanner(AD_ZONE_ID);
+        if (banner != null) {
+            bannerContainer.addView(banner);
         }
 
 6. Show native ad:
 
         private void showNativeAd() {
-            if(PeakSdk.checkAdAvailable(AD_ZONE_ID)) {
+            if(PeakSdk.checkNativeAdAvailable(AD_ZONE_ID)) {
                 PeakNativeAdModel peakNativeAd = PeakSdk.showNativeAd(NATIVE_AD_ID);
                 if (peakNativeAd != null) {
                     //notify SDK that ad was shown
@@ -112,7 +114,7 @@ Then include Google Play Services to your application's build.gradle for better 
   
 7. Using async ad requests
   
-        PeakAsyncAdRequestListener asyncAdRequestListener = new PeakAsyncAdRequestListener() {
+        PeakAsyncInterstitialAdRequestListener asyncInterstitialAdRequestListener = new PeakAsyncInterstitialAdRequest.AsyncAdRequestListener() {
             @Override
             public void onAdReady(String adZoneId) {
                 //Show the ad with adZoneId
@@ -121,20 +123,21 @@ Then include Google Play Services to your application's build.gradle for better 
         };
         
         ..
-        //Create an instance of PeakAsyncAdRequest with desired ad zone id and start it
-        PeakAsyncAdRequest asyncAdRequest = PeakSdk.createAdRequest(AD_ZONE_ID);
-        asyncAdRequest.start(asyncAdRequestListener);
+        //Create an instance of PeakAsyncInterstitialAdRequest with desired ad zone id and start it
+        PeakAsyncInterstitialAdRequest asyncInterstitialAdRequest = PeakSdk.createInterstitialAdRequest(AD_ZONE_ID);
+        asyncInterstitialAdRequest.start(asyncInterstitialAdRequestListener);
         ..
         
         @Override
         protected void onPause() {
           ...
           //Cancel the request if you don't need it anymore
-          asyncAdRequest.cancel();
+          asyncInterstitialAdRequest.cancel();
           super.onPause();
         }
         
         
+    Please use PeakAsyncNativeAdRequestListener for native ads. Notice that PeakAdRequestListener class and PeakSdk.createAdRequest(String zoneId) method are deprecated now.
 8. Using ad targeting.
 
   Peak SDK provides a way to set **preffered** targeting age and gender to inrease eCPM. This will not restrict ads to show only targeted ads. 
