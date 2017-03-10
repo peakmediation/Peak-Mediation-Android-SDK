@@ -60,6 +60,8 @@ Then include Google Play Services to your application's build.gradle for better 
         if(PeakSdk.checkInterstitialAdAvailable(AD_ZONE_ID)) {
             PeakSdk.showInterstitial(AD_ZONE_ID);
         }
+        
+    Please don't try to show ads on activity startup because some ads with possible higher eCPM start to load on initialization with activity and it takes some time to fetch ads. If you want to show the ad when a new activity starts, show it before you start a new activity and then you can start the activity the interstitial is closed.
 
 5. Get banner view and insert it to your banner container view:
 
