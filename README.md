@@ -43,7 +43,7 @@ Then include Google Play Services to your application's build.gradle for better 
           super.onDestroy();
         }
 
-2. Initialize peak sdk in your activity with your application id, PeakSdkUiHelper and PeakSdkListener. Use null for PeakSdkListener if you don't want to handle callbacks:
+2. Initialize peak sdk in your **activity where you want to show ads** with your application id, PeakSdkUiHelper and PeakSdkListener. Use null for PeakSdkListener if you don't want to handle callbacks:
 
         PeakSdk.initialize(PEAK_APP_ID, uiHelper, peakSdkListener);
 
@@ -61,7 +61,8 @@ Then include Google Play Services to your application's build.gradle for better 
             PeakSdk.showInterstitial(AD_ZONE_ID);
         }
         
-    Please don't try to show ads on activity startup because some ads with possible higher eCPM start to load on initialization with activity and it takes some time to fetch ads. If you want to show the ad when a new activity starts, show it before you start a new activity and then you can start the activity the interstitial is closed.
+    **Please don't try to show ads on activity startup** because some ads with possible higher eCPM start to load on initialization with activity and it takes some time to fetch ads. If you want to show the ad when a new activity starts, show it before you start a new activity and then you can start the activity the interstitial is closed.
+
 
 5. Get banner view and insert it to your banner container view:
 
@@ -82,7 +83,7 @@ Then include Google Play Services to your application's build.gradle for better 
                 }
             }
         }
-
+        
         private void bindNativeAdToViews(PeakNativeAdModel nativeAd) {
             //fill views with received native ad data
             
@@ -92,7 +93,6 @@ Then include Google Play Services to your application's build.gradle for better 
             // set the nativeAd.getTitle() into you TextView for title
             // set the nativeAd.getText() into you TextView for description text
             // set the nativeAd.getActionText() into your Button
-
             // set onClickListener on your button 
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +101,7 @@ Then include Google Play Services to your application's build.gradle for better 
                     PeakSdk.handleNativeAdClicked(NATIVE_AD_ID);
                 }
             });
-
+            
             // set onClickListener on privacy information icon ImageView
             privacyInformationIconImageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,8 +111,8 @@ Then include Google Play Services to your application's build.gradle for better 
                 }
             });
         }
-        
-  Make sure your ads are clearly distinguished from the rest of your app’s content. You must include clearly visible text that reads “Promoted,” “Sponsored,” “Ad,” or a localized version thereof.
+    
+    Make sure your ads are clearly distinguished from the rest of your app’s content. You must include clearly visible text that reads “Promoted,” “Sponsored,” “Ad,” or a localized version thereof.
   
 7. Using async ad requests
   
@@ -138,8 +138,8 @@ Then include Google Play Services to your application's build.gradle for better 
           super.onPause();
         }
         
-        
     Please use PeakAsyncNativeAdRequestListener for native ads. Notice that PeakAdRequestListener class and PeakSdk.createAdRequest(String zoneId) method are deprecated now.
+
 8. Using ad targeting.
 
   Peak SDK provides a way to set **preffered** targeting age and gender to inrease eCPM. This will not restrict ads to show only targeted ads. 
