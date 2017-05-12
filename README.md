@@ -19,33 +19,9 @@ Then include Google Play Services to your application's build.gradle for better 
 
 ## Using Peak sdk
 
-1. Create an instance of PeakSdkUiHelper in activity and call PeakSdkUiHelper.resume(), PeakSdkUiHelper.destroy() and PeakSdkUiHelper.pause() in appropriate activity methods:
-        
-        ...
-        PeakSdkUiHelper uiHelper = new PeakSdkUiHelper(MainActivity.this);
-        ...
-        
-        @Override
-        protected void onPause() {
-          uiHelper.pause();
-          super.onPause();
-        }
-         
-        @Override
-        protected void onResume() {
-          super.onResume();
-          uiHelper.resume();
-        }
-         
-        @Override
-        protected void onDestroy() {
-          uiHelper.destroy();
-          super.onDestroy();
-        }
+1. Initialize peak sdk in your **activity where you want to show ads** with your application id and PeakSdkListener. Use null for PeakSdkListener if you don't want to handle callbacks:
 
-2. Initialize peak sdk in your **activity where you want to show ads** with your application id, PeakSdkUiHelper and PeakSdkListener. Use null for PeakSdkListener if you don't want to handle callbacks:
-
-        PeakSdk.initialize(PEAK_APP_ID, uiHelper, peakSdkListener);
+        PeakSdk.initialize(PEAK_APP_ID, MyActivity.this, peakSdkListener);
 
 3. Check ad availability for specified zone:
 
