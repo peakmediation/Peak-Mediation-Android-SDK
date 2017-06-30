@@ -23,7 +23,7 @@ Then include Google Play Services to your application's build.gradle for better 
 
         PeakSdk.initialize(PEAK_APP_ID, MyActivity.this, peakSdkListener);
 
-3. Check ad availability for specified zone:
+2. Check ad availability for specified zone:
 
         boolean isInterstitialAdAvailable = PeakSdk.checkInterstitialAdAvailable(AD_ZONE_ID);
         
@@ -31,7 +31,7 @@ Then include Google Play Services to your application's build.gradle for better 
         
         boolean isNativeAdAvailable = PeakSdk.checkNativeAdAvailable(AD_ZONE_ID);
 
-4. Show interstitial ad:
+3. Show interstitial ad:
 
         if(PeakSdk.checkInterstitialAdAvailable(AD_ZONE_ID)) {
             PeakSdk.showInterstitial(AD_ZONE_ID);
@@ -40,14 +40,14 @@ Then include Google Play Services to your application's build.gradle for better 
     **Please don't try to show ads on activity startup** because some ads with possible higher eCPM start to load on initialization with activity and it takes some time to fetch ads. If you want to show the ad when a new activity starts, show it before you start a new activity and then you can start the activity the interstitial is closed.
 
 
-5. Get banner view and insert it to your banner container view:
+4. Get banner view and insert it to your banner container view:
 
         View banner = PeakSdk.showBanner(AD_ZONE_ID);
         if (banner != null) {
             bannerContainer.addView(banner);
         }
 
-6. Show native ad:
+5. Show native ad:
 
         private void showNativeAd() {
             if(PeakSdk.checkNativeAdAvailable(AD_ZONE_ID)) {
@@ -90,7 +90,7 @@ Then include Google Play Services to your application's build.gradle for better 
     
     Make sure your ads are clearly distinguished from the rest of your app’s content. You must include clearly visible text that reads “Promoted,” “Sponsored,” “Ad,” or a localized version thereof.
   
-7. Using async ad requests
+6. Using async ad requests
   
         PeakAsyncInterstitialAdRequestListener asyncInterstitialAdRequestListener = new PeakAsyncInterstitialAdRequest.AsyncAdRequestListener() {
             @Override
@@ -116,7 +116,7 @@ Then include Google Play Services to your application's build.gradle for better 
         
     Please use PeakAsyncNativeAdRequestListener for native ads. Notice that PeakAdRequestListener class and PeakSdk.createAdRequest(String zoneId) method are deprecated now.
 
-8. Using ad targeting.
+7. Using ad targeting.
 
   Peak SDK provides a way to set **preffered** targeting age and gender to inrease eCPM. This will not restrict ads to show only targeted ads. 
   **Please set targeting BEFORE the first sdk initialization.**
@@ -124,7 +124,7 @@ Then include Google Play Services to your application's build.gradle for better 
   **PeakSdk.setTargetingAge(int age)** accepts any number. By default it is set to -1, this value defines unspecified targeting age.    
   **PeakSdksetTargetingGender(PeakGender gender)** accepts *PeakGender* enum that has three states : MALE, FEMALE and UNSPECIFIED. By default it is set to UNSPECIFIED.
   
-9. Permissions
+8. Permissions
 
 Peak Android SDK needs permissions android.permission.WRITE_EXTERNAL_STORAGE and android.permission.ACCESS_FINE_LOCATION but on new Android versions (6.0+) these permissions are not granted for app by default. To make it work correct need to add runtime permissions request in app or manually grant these permissions in app settings.
 
