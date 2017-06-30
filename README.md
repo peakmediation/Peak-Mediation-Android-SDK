@@ -123,5 +123,9 @@ Then include Google Play Services to your application's build.gradle for better 
     
   **PeakSdk.setTargetingAge(int age)** accepts any number. By default it is set to -1, this value defines unspecified targeting age.    
   **PeakSdksetTargetingGender(PeakGender gender)** accepts *PeakGender* enum that has three states : MALE, FEMALE and UNSPECIFIED. By default it is set to UNSPECIFIED.
+  
+9. Permissions
+
+Peak Android SDK needs permissions android.permission.WRITE_EXTERNAL_STORAGE and android.permission.ACCESS_FINE_LOCATION but on new Android versions (6.0+) these permissions are not granted for app by default. To make it work correct need to add runtime permissions request in app or manually grant these permissions in app settings.
 
 
