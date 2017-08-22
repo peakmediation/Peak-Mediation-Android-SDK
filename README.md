@@ -1,22 +1,20 @@
 # Peak-Android-SDK
 
 ## Integration instructions 
-Add to your application's build.gradle: 
+Download peak-sdk-X.X.aar file and import it to your project:
 
-        dependencies {
-            ...
-            compile 'com.peaksdk:sdk:0.21.0'
-            ...
-        }
+    File -> New -> New Module
+    Import .JAR/.AAR package
+    Pick the peak-sdk-X.X.aar file
 
-Then include Google Play Services for better compatibility:
+Then include Google Play Services to your application's build.gradle for better compatibility:
 
-        dependencies {
-            ...
-            compile 'com.google.android.gms:play-services-ads:9.4.0'
-            compile 'com.google.android.gms:play-services-location:9.4.0'
-            ...
-        }
+    dependencies {
+        ...
+        compile 'com.google.android.gms:play-services-ads:9.4.0'
+        compile 'com.google.android.gms:play-services-location:9.4.0'
+        ...
+    }
 
 
 ## Using Peak sdk
