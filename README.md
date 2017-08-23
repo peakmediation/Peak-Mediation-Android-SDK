@@ -3,25 +3,26 @@
 ## Integration instructions 
 
 Add to your root build.gradle: 
-
-allprojects {
-    repositories {
-        
-	...
-        maven {
-            url "http://repos.peakmediation.com:8081/artifactory/libs-release-local/"
-        }
-	...
+```
+    allprojects {
+       repositories {
+           ...
+       	   maven {
+            	url "http://repos.peakmediation.com:8081/artifactory/libs-release-local/"
+	   }
+	   ...
+	}
     }
-}
+```
 
-Add to your application's build.gradle:
-
-  dependencies {
+Add to your application's build.gradle: 
+```
+    dependencies {
         ...
-         compile 'com.peaksdk:sdk:0.21.0'
+        compile 'com.peaksdk:sdk:0.21.0'
         ...
     }
+```
 
 
 Then include Google Play Services for better compatibility:
